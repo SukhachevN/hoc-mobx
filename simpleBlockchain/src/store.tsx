@@ -26,8 +26,8 @@ class BlockchainStore {
 
   get valid() {
     return this.blocks.every((block, index) => {
-      const prevBlock = this.blocks[index - 1] ?? emptyBlock;
-      const hash = sha256(
+      const prevBlock: IBlock = this.blocks[index - 1] ?? emptyBlock;
+      const hash: string = sha256(
         `${prevBlock.hash}${JSON.stringify(block.transactions)}`
       ).toString();
 
